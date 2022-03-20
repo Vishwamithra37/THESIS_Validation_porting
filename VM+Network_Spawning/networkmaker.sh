@@ -11,6 +11,7 @@ echo "Floating IP: $(cat floating_ip)"
 # openstack router unset --external-gateway router1
 # openstack router remove subnet router1 subnet1
 # openstack router delete router1
+
 # openstack subnet delete subnet1
 # openstack network delete net1
 
