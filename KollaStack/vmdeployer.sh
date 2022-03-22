@@ -22,8 +22,6 @@ rm ~/.ssh/known_hosts
 scp -o StrictHostKeyChecking=no ./keystone.sh ubuntu@$floating_ip:~/keystone.sh
 scp -o StrictHostKeyChecking=no ./keystone.sql ubuntu@$floating_ip:~/keystone.sql
 scp -o StrictHostKeyChecking=no ./glance-api.conf ubuntu@$floating_ip:~/glance.conf
-scp -o StrictHostKeyChecking=no ./placement.conf ubuntu@$floating_ip:~/placement.conf
-
 # ssh -o StrictHostKeyChecking=no ubuntu@$floating_ip 'sudo apt update'
 scp -o StrictHostKeyChecking=no ./openstack.rc ubuntu@$floating_ip:~/openstack.rc
 scp -o StrictHostKeyChecking=no ./netplan ubuntu@$floating_ip:~/netplan                                 

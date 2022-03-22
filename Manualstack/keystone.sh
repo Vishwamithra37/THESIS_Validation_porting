@@ -1,7 +1,11 @@
 floating_ip='91.123.203.36'
-add-apt-repository cloud-archive:wallaby
-sudo apt update
+add-apt-repository -y cloud-archive:wallaby
 sudo apt install ca-certificates
+sudo apt update
+apt install -y rabbitmq-server
+rabbitmqctl add_user openstack RABBIT_PASS
+rabbitmqctl set_permissions openstack ".*" ".*" ".*"
+# apt install etcd
 sudo apt install -y mariadb-server
 sudo mysql < keystone.sql
 sudo apt install -y keystone
@@ -26,7 +30,7 @@ export OS_AUTH_URL=http://$floating_ip:5000/v3
 export OS_IDENTITY_API_VERSION=3
 sudo apt install -y python3-openstackclient
 # Stop here.
-echo "Keystone is supposed to be done."
+echo "############################################Keystone is supposed to be done.#########################################################"
 
 openstack project create service --domain default --description "Service Project"
 openstack user create --domain default --password ubuntu glance
@@ -43,7 +47,22 @@ sudo apt install -y glance
 mv glance.conf /etc/glance/glance-api.conf
 glance-manage db_sync
 service glance-api restart
-echo 'Glance has been successfully Installed'
+echo '############################################Glance has been successfully Installed#####################################################'
+openstack user create --domain default --password ubuntu placement
+openstack role add --project service --user placement admin
+openstack service create --name placement --description "Placement API" placement
+openstack endpoint create --region RegionOne placement public http://$floating_ip:8778
+openstack endpoint create --region RegionOne placement internal http://$floating_ip:8778
+openstack endpoint create --region RegionOne placement admin http://$floating_ip:8778
+apt install -y placement-api
+mv placement.conf /etc/placement/placement.conf
+service placement-api restart
+service apache2 restart
+echo '############################################Placement has been successfully Installed#####################################################'
+
+
+
+
 
 # sudo sed -i 's/\[keystone_authtoken\]/\[keystone_authtoken\]\n'$toinsertintoglanceapiconf'/g' /etc/glance/glance-api.conf
 # sed -i '/^#/d' /etc/glance/glance-api.conf
