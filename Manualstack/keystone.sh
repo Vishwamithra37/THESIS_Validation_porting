@@ -27,6 +27,7 @@ export OS_IDENTITY_API_VERSION=3
 sudo apt install -y python3-openstackclient
 # Stop here.
 echo "Keystone is supposed to be done."
+
 openstack project create service --domain default --description "Service Project"
 openstack user create --domain default --password ubuntu glance
 openstack role add --project service --user glance admin
