@@ -1,56 +1,56 @@
 CREATE DATABASE keystone;
-GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' \
+GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' \
 IDENTIFIED BY 'KEYSTONE_DBPASS';
 GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' \
 IDENTIFIED BY 'KEYSTONE_DBPASS';
 CREATE DATABASE glance;
-GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'localhost' \
+GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%' \
 IDENTIFIED BY 'GLANCE_DBPASS';
 GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%' \
 IDENTIFIED BY 'GLANCE_DBPASS';
 CREATE DATABASE placement;
-GRANT ALL PRIVILEGES ON placement.* TO 'placement'@'localhost' \
+GRANT ALL PRIVILEGES ON placement.* TO 'placement'@'%' \
   IDENTIFIED BY 'PLACEMENT_DBPASS';
 GRANT ALL PRIVILEGES ON placement.* TO 'placement'@'%' \
   IDENTIFIED BY 'PLACEMENT_DBPASS';
 CREATE DATABASE nova;
 CREATE DATABASE nova_cell0;
 CREATE DATABASE nova_api;
-GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'localhost' \
+GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' \
   IDENTIFIED BY 'NOVA_DBPASS';
 GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' \
     IDENTIFIED BY 'NOVA_DBPASS';
 
-GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'localhost' \
+GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'%' \
   IDENTIFIED BY 'NOVA_DBPASS';
 GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'%' \
   IDENTIFIED BY 'NOVA_DBPASS';    
-GRANT ALL PRIVILEGES ON nova_cell0.* TO 'nova'@'localhost' \
+GRANT ALL PRIVILEGES ON nova_cell0.* TO 'nova'@'%' \
     IDENTIFIED BY 'NOVA_DBPASS';
 GRANT ALL PRIVILEGES ON nova_cell0.* TO 'nova'@'%' \
     IDENTIFIED BY 'NOVA_DBPASS';
 CREATE DATABASE neutron;
-GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'localhost' \
+GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'%' \
   IDENTIFIED BY 'NEUTRON_DBPASS';
 GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'%' \
     IDENTIFIED BY 'NEUTRON_DBPASS';
 CREATE DATABASE cinder;
-GRANT ALL PRIVILEGES ON cinder.* TO 'cinder'@'localhost' \
+GRANT ALL PRIVILEGES ON cinder.* TO 'cinder'@'%' \
   IDENTIFIED BY 'CINDER_DBPASS';
 GRANT ALL PRIVILEGES ON cinder.* TO 'cinder'@'%' \
     IDENTIFIED BY 'CINDER_DBPASS';
 CREATE DATABASE heat;
-GRANT ALL PRIVILEGES ON heat.* TO 'heat'@'localhost' \
+GRANT ALL PRIVILEGES ON heat.* TO 'heat'@'%' \
   IDENTIFIED BY 'HEAT_DBPASS';
 GRANT ALL PRIVILEGES ON heat.* TO 'heat'@'%' \
     IDENTIFIED BY 'HEAT_DBPASS';
 CREATE DATABASE trove;
-GRANT ALL PRIVILEGES ON trove.* TO 'trove'@'localhost' \
+GRANT ALL PRIVILEGES ON trove.* TO 'trove'@'%' \
   IDENTIFIED BY 'TROVE_DBPASS';
 GRANT ALL PRIVILEGES ON trove.* TO 'trove'@'%' \
     IDENTIFIED BY 'TROVE_DBPASS';
 CREATE DATABASE manila;
-GRANT ALL PRIVILEGES ON manila.* TO 'manila'@'localhost' \
+GRANT ALL PRIVILEGES ON manila.* TO 'manila'@'%' \
   IDENTIFIED BY 'MANILA_DBPASS';
 GRANT ALL PRIVILEGES ON manila.* TO 'manila'@'%' \
     IDENTIFIED BY 'MANILA_DBPASS';  

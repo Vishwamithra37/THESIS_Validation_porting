@@ -9,7 +9,7 @@ rabbitmqctl set_permissions openstack ".*" ".*" ".*"
 sudo apt install -y mariadb-server
 sudo mysql < keystone.sql
 sudo apt install -y keystone
-sudo sed -i 's/sqlite\:\/\/\/\/var\/lib\/keystone\/keystone.db/mysql+pymysql\:\/\/keystone\:KEYSTONE_DBPASS@localhost\/keystone/g' /etc/keystone/keystone.conf
+sudo sed -i 's/sqlite\:\/\/\/\/var\/lib\/keystone\/keystone.db/mysql+pymysql\:\/\/keystone\:KEYSTONE_DBPASS@192.168.0.5\/keystone/g' /etc/keystone/keystone.conf
 sudo sed -i 's/\#provider/provider/g' /etc/keystone/keystone.conf
 keystone-manage fernet_setup --keystone-user keystone --keystone-group keystone
 keystone-manage credential_setup --keystone-user keystone --keystone-group keystone
@@ -75,7 +75,8 @@ service nova-api restart
 service nova-scheduler restart
 service nova-conductor restart
 service nova-novncproxy restart
-echo '############################################Nova has been successfully Installed#####################################################'
+echo '############################################Nova controller has been successfully Installed#####################################################'
+
 
 
 
