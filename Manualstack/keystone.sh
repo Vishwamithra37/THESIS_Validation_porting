@@ -59,6 +59,18 @@ mv placement.conf /etc/placement/placement.conf
 service placement-api restart
 service apache2 restart
 echo '############################################Placement has been successfully Installed#####################################################'
+openstack user create --domain default --password ubuntu nova
+openstack role add --project service --user nova admin
+openstack service create --name nova --description "OpenStack Compute" compute
+openstack endpoint create --region RegionOne compute public http://$floating_ip:8774/v2.1
+openstack endpoint create --region RegionOne compute internal http://$floating_ip:8774/v2.1
+openstack endpoint create --region RegionOne compute admin http://$floating_ip:8774/v2.1
+apt install -y nova-api nova-conductor nova-consoleauth nova-novncproxy nova-scheduler
+sed -i '/^#/d' /etc/nova/nova.conf
+sed -i '/^$/d' /etc/nova/nova.conf
+
+
+
 
 
 
