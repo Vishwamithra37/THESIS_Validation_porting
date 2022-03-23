@@ -65,9 +65,17 @@ openstack service create --name nova --description "OpenStack Compute" compute
 openstack endpoint create --region RegionOne compute public http://$floating_ip:8774/v2.1
 openstack endpoint create --region RegionOne compute internal http://$floating_ip:8774/v2.1
 openstack endpoint create --region RegionOne compute admin http://$floating_ip:8774/v2.1
-apt install -y nova-api nova-conductor nova-consoleauth nova-novncproxy nova-scheduler
-sed -i '/^#/d' /etc/nova/nova.conf
-sed -i '/^$/d' /etc/nova/nova.conf
+apt install -y nova-api nova-conductor nova-novncproxy nova-scheduler
+mv nova.conf /etc/nova/nova.conf
+nova-manage api_db sync
+nova-manage cell_v2 map_cell0
+nova-manage cell_v2 create_cell --name=cell1 --verbose
+nova-manage cell_v2 list_cells
+service nova-api restart
+service nova-scheduler restart
+service nova-conductor restart
+service nova-novncproxy restart
+echo '############################################Nova has been successfully Installed#####################################################'
 
 
 
