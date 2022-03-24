@@ -7,6 +7,9 @@ rabbitmqctl add_user openstack RABBIT_PASS
 rabbitmqctl set_permissions openstack ".*" ".*" ".*"
 # apt install etcd
 sudo apt install -y mariadb-server
+# Use sed -i to bind to 0.0.0.0.
+sed -i 's/bind-address.*/bind-address =0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
+sudo systemctl restart mariadb
 sudo mysql < keystone.sql
 sudo apt install -y keystone
 sudo sed -i 's/sqlite\:\/\/\/\/var\/lib\/keystone\/keystone.db/mysql+pymysql\:\/\/keystone\:KEYSTONE_DBPASS@192.168.0.5\/keystone/g' /etc/keystone/keystone.conf
@@ -31,7 +34,6 @@ export OS_IDENTITY_API_VERSION=3
 sudo apt install -y python3-openstackclient
 # Stop here.
 echo "############################################Keystone is supposed to be done.#########################################################"
-
 openstack project create service --domain default --description "Service Project"
 openstack user create --domain default --password ubuntu glance
 openstack role add --project service --user glance admin
@@ -56,7 +58,7 @@ openstack endpoint create --region RegionOne placement internal http://$floating
 openstack endpoint create --region RegionOne placement admin http://$floating_ip:8778
 apt install -y placement-api
 mv placement.conf /etc/placement/placement.conf
-service placement-api restart
+placement-manage db sync
 service apache2 restart
 echo '############################################Placement has been successfully Installed#####################################################'
 openstack user create --domain default --password ubuntu nova

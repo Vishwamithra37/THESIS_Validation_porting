@@ -4,17 +4,17 @@ openstack server create \
 --flavor 19178315-27c1-4506-b6a7-7697cbc6d6b5 \
 --image 235d9bfb-7a13-4434-9966-cfc0ae033e79 \
 --security-group TATTA \
---nic net-id=54b85f5a-081c-4dc1-914f-479732356b6e,v4-fixed-ip=192.168.0.5 \
---key-name ooru oola3
+--nic net-id=54b85f5a-081c-4dc1-914f-479732356b6e,v4-fixed-ip=192.168.0.6 \
+--key-name ooru oola4
 sleep 15s
-openstack server add floating ip oola3 $floating_ip
+openstack server add floating ip oola4 $floating_ip
 # Assign '91.123.203.36' to variable 'floating_ip'.
 
 
 sleep 7s
 openstack server add fixed ip \
 --fixed-ip-address 192.168.0.5 \
-oola3 \
+oola4 \
 net2
 sleep 3s
 eval `ssh-agent`
