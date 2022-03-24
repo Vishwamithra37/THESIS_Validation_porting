@@ -1,4 +1,9 @@
 floating_ip='91.123.203.36'
+sudo apt update
+ip link set ens7 up
+apt install -y network-manager
+sudo touch /etc/NetworkManager/conf.d/10-globally-managed-devices.conf
+sudo service network-manager restart
 add-apt-repository -y cloud-archive:wallaby
 sudo apt install ca-certificates
 sudo apt update
@@ -78,6 +83,28 @@ service nova-scheduler restart
 service nova-conductor restart
 service nova-novncproxy restart
 echo '############################################Nova controller has been successfully Installed#####################################################'
+openstack user create --domain default --password ubuntu neutron
+openstack role add --project service --user neutron admin
+openstack service create --name neutron --description "OpenStack Networking" network
+openstack endpoint create --region RegionOne network public http://$floating_ip:9696
+openstack endpoint create --region RegionOne network internal http://$floating_ip:9696
+openstack endpoint create --region RegionOne network admin http://$floating_ip:9696
+networkctl
+apt install -y neutron-server neutron-plugin-ml2 \
+neutron-linuxbridge-agent neutron-l3-agent neutron-dhcp-agent \
+neutron-metadata-agent
+mv dhcp_agent.ini /etc/neutron/dhcp_agent.ini
+mv l3_agent.ini /etc/neutron/l3_agent.ini
+mv linuxbridge_agent.ini /etc/neutron/plugins/ml2/linuxbridge_agent.ini
+mv metadata_agent.ini /etc/neutron/metadata_agent.ini
+mv ml2_conf.ini /etc/neutron/plugins/ml2/ml2_conf.ini
+neutron-db-manage --config-file /etc/neutron/neutron.conf   --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade head
+service nova-api restart
+service neutron-server restart
+service neutron-linuxbridge-agent restart
+service neutron-dhcp-agent restart
+service neutron-metadata-agent restart
+echo '############################################Neutron controller has been successfully Installed#####################################################'
 
 
 
@@ -102,3 +129,7 @@ echo '############################################Nova controller has been succe
 # username = glance
 # password = ubuntu
 # """
+# service neutron-server restart
+# service neutron-linuxbridge-agent restart
+# service neutron-dhcp-agent restart
+# service neutron-metadata-agent restart

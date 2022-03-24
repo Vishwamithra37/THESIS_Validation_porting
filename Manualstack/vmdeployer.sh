@@ -13,7 +13,7 @@ openstack server add floating ip oola3 $floating_ip
 
 sleep 7s
 openstack server add fixed ip \
---fixed-ip-address 192.168.0.5 \
+--fixed-ip-address 192.169.0.5 \
 oola3 \
 net2
 sleep 3s

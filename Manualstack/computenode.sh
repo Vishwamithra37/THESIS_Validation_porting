@@ -1,4 +1,4 @@
-floating_ip='91.123.203.36'
+floating_ip='89.46.80.73'
 . ./../../keys2/openstack.sh
 openstack server create \
 --flavor 19178315-27c1-4506-b6a7-7697cbc6d6b5 \
@@ -13,7 +13,7 @@ openstack server add floating ip oola4 $floating_ip
 
 sleep 7s
 openstack server add fixed ip \
---fixed-ip-address 192.168.0.5 \
+--fixed-ip-address 192.169.0.11 \
 oola4 \
 net2
 sleep 3s
