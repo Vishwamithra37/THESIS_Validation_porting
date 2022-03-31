@@ -1,5 +1,5 @@
 floating_ip='91.123.203.36'
-name='kollaControllerr'
+name='kollaController'
 . ./../../keys2/openstack.sh
 openstack server create \
 --flavor 19178315-27c1-4506-b6a7-7697cbc6d6b5 \
@@ -21,6 +21,8 @@ eval `ssh-agent`
 ssh-add ./../../keys2/openkey
 rm ~/.ssh/known_hosts
 scp -o StrictHostKeyChecking=no ./base.sh ubuntu@$floating_ip:~/base.sh
+scp -o StrictHostKeyChecking=no ./../../keys2/openkey ubuntu@$floating_ip:~/openkey
+scp -o StrictHostKeyChecking=no ./addssh.sh ubuntu@$floating_ip:~/sshadd.sh
 scp -o StrictHostKeyChecking=no ./keystone.sql ubuntu@$floating_ip:~/keystone.sql
 scp -o StrictHostKeyChecking=no ./glance-api.conf ubuntu@$floating_ip:~/glance.conf
 # ssh -o StrictHostKeyChecking=no ubuntu@$floating_ip 'sudo apt update'

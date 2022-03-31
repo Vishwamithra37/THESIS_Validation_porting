@@ -1,4 +1,7 @@
+floating_ip='91.123.203.36'
+floating_ip2='192.169.0.8'
 sudo apt update
+chmod 400 openkey
 apt install ca-certificates -y
 ##########################
 ip link set ens7 up
@@ -22,3 +25,10 @@ sudo chown $USER:$USER /etc/kolla
 cp -r kolla-ansible/etc/kolla/* /etc/kolla
 cp kolla-ansible/ansible/inventory/* .
 kolla-ansible install-deps
+kolla-genpwd
+eval `ssh-agent`
+ssh-add openkey
+echo $floating_ip' controller' >> /etc/hosts
+echo $floating_ip2' nova' >> /etc/hosts
+mv nmultinode multinode
+pip install ansible

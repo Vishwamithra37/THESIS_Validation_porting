@@ -20,7 +20,7 @@ sleep 3s
 eval `ssh-agent`
 ssh-add ./../../keys2/openkey
 rm ~/.ssh/known_hosts
-scp -o StrictHostKeyChecking=no ./computenodefiles/neutron.conf ubuntu@$floating_ip:~/neutron.conf
+scp -o StrictHostKeyChecking=no ./computebase.sh ubuntu@$floating_ip:~/computebase.sh
 scp -o StrictHostKeyChecking=no ./computenodefiles/nova.conf ubuntu@$floating_ip:~/nova.conf
 scp -o StrictHostKeyChecking=no ./nova.sh ubuntu@$floating_ip:~/nova.sh
 
