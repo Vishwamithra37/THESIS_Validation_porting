@@ -31,7 +31,8 @@ ssh-add openkey
 # mv nmultinode multinode
 ip link set ens7 down
 pip install ansible
-nano /etc/kolla/globals.yml
+nano /etc/kolla/globals.yml #Add wallaby, add ubuntu, change eth0 to ens3(Primary interface) and eth1 to ens7(Secondary interface in off state), off ha proxy.
 kolla-ansible -i ./all-in-one bootstrap-servers
 kolla-ansible -i ./all-in-one prechecks
 kolla-ansible -i ./all-in-one deploy
+kolla-ansible post-deploy
