@@ -4,10 +4,10 @@ sudo apt update
 chmod 400 openkey
 apt install ca-certificates -y
 ##########################
-ip link set ens7 up
-apt install -y network-manager
-sudo touch /etc/NetworkManager/conf.d/10-globally-managed-devices.conf
-sudo service network-manager restart
+# ip link set ens7 up
+# apt install -y network-manager
+# sudo touch /etc/NetworkManager/conf.d/10-globally-managed-devices.conf
+# sudo service network-manager restart
 #########################
 sudo apt install -y python3-dev libffi-dev gcc libssl-dev
 sudo apt install -y python3-pip
@@ -28,7 +28,10 @@ kolla-ansible install-deps
 kolla-genpwd
 eval `ssh-agent`
 ssh-add openkey
-echo $floating_ip' controller' >> /etc/hosts
-echo $floating_ip2' nova' >> /etc/hosts
-mv nmultinode multinode
+# mv nmultinode multinode
+ip link set ens7 down
 pip install ansible
+nano /etc/kolla/globals.yml
+kolla-ansible -i ./all-in-one bootstrap-servers
+kolla-ansible -i ./all-in-one prechecks
+kolla-ansible -i ./all-in-one deploy
