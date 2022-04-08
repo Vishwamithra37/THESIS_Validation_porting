@@ -4,7 +4,11 @@ Host nova\n Hostname 192.168.1.5\n user ubuntu\n IdentityFile /etc/home/openkey\
 Host nova Hostname 192.168.1.5 user ubuntu IdentityFile /etc/home/openkey StrictHostKeyChecking no
 Host nova Hostname 192.168.1.5 user ubuntu IdentityFile /etc/home/openkey StrictHostKeyChecking no
 
-Host nova             Hostname 192.168.1.5            user ubuntu            IdentityFile /etc/home/openkey            StrictHostKeyChecking no
+Host nova           
+  Hostname 192.168.1.5
+            user ubuntu
+            IdentityFile /etc/home/openkey
+            StrictHostKeyChecking no
 
 Host nova 
             Hostname 192.168.1.5

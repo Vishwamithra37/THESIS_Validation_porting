@@ -2,7 +2,7 @@ floating_ip='91.123.203.36'
 name='kollaController'
 . ./../../keys2/openstack.sh
 openstack server create \
---flavor 19178315-27c1-4506-b6a7-7697cbc6d6b5 \
+--flavor 2 \
 --image 235d9bfb-7a13-4434-9966-cfc0ae033e79 \
 --security-group TATTA \
 --nic net-id=54b85f5a-081c-4dc1-914f-479732356b6e,v4-fixed-ip='192.168.0.5' \
