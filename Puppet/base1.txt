@@ -1,0 +1,15 @@
+apt update
+apt install ca-certificates
+git clone https://opendev.org/openstack/puppet-openstack-integration
+cd puppet-openstack-integration
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 4528B6CD9E61EF26
+wget puppet7-release-bionic.deb
+dpkg -i puppet7-release-bionic.deb
+apt install puppet
+puppet module install openstack/openstacklib --version 18.4.0
+puppet module install puppetlabs/stdlib --version 7.1.0
+puppet module install puppet/archive --version 5.0.0
+puppet module install puppetlabs/mysql --version 10.9.0
+puppet module install puppetlabs/apt --version 5.0.0
+apt update -y
+./all-in-one.sh

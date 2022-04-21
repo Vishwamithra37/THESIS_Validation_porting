@@ -1,0 +1,21 @@
+apt install net-tools
+apt update -y
+apt upgrade -y
+sudo apt install default-jdk
+wget https://apt.puppet.com/puppet7-release-bionic.deb
+sudo dpkg -i puppet7-release-bionic.deb
+apt update -y
+apt-get install puppetserver
+sudo systemctl start puppetserver
+sudo apt-get update
+sudo apt upgrade -y
+ifconfig ens7 up
+apt-install python3-pip
+wget http://apt.puppet.com/puppet-tools-release-bionic.deb
+sudo dpkg -i 
+apt install puppet
+puppet module install openstack-openstacklib --version 18.4.0
+apt update -y
+git clone https://opendev.org/openstack/puppet-openstack-integration
+cd puppet-openstack-integration
+./all-in-one.sh
