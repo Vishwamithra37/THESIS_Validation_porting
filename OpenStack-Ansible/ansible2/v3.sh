@@ -6,7 +6,7 @@ openstack server create \
 --nic net-id=54b85f5a-081c-4dc1-914f-479732356b6ec \
 --key-name ooru oola3
 sleep 15s
-openstack server add floating ip oola3 91.123.203.57
+openstack server add floating ip oola3 89.46.80.73
 sleep 7s
 openstack server add fixed ip \
 --fixed-ip-address 192.168.1.2 \

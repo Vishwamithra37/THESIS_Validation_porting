@@ -25,6 +25,7 @@ scp -o StrictHostKeyChecking=no ./../../keys2/openkey ubuntu@$floating_ip:~/open
 scp -o StrictHostKeyChecking=no ./addssh.sh ubuntu@$floating_ip:~/sshadd.sh
 scp -o StrictHostKeyChecking=no ./keystone.sql ubuntu@$floating_ip:~/keystone.sql
 scp -o StrictHostKeyChecking=no ./glance-api.conf ubuntu@$floating_ip:~/glance.conf
+
 # ssh -o StrictHostKeyChecking=no ubuntu@$floating_ip 'sudo apt update'
 scp -o StrictHostKeyChecking=no ./openstack.rc ubuntu@$floating_ip:~/openstack.rc
 scp -o StrictHostKeyChecking=no ./netplan ubuntu@$floating_ip:~/netplan                                 

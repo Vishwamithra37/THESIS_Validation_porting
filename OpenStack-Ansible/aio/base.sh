@@ -13,4 +13,3 @@ openstack-ansible setup-openstack.yml
 cd /opt/openstack-ansible/playbooks
 cd 
 
-

@@ -25,11 +25,17 @@ scp -o StrictHostKeyChecking=no ./keystone.sql ubuntu@$floating_ip:~/keystone.sq
 scp -o StrictHostKeyChecking=no ./conffiles/glance-api.conf ubuntu@$floating_ip:~/glance.conf
 scp -o StrictHostKeyChecking=no ./conffiles/placement.conf ubuntu@$floating_ip:~/placement.conf
 scp -o StrictHostKeyChecking=no ./conffiles/nova.conf ubuntu@$floating_ip:~/nova.conf
+scp -o StrictHostKeyChecking=no ./conffiles/dhcp_agent.ini ubuntu@$floating_ip:~/dhcp_agent.ini
+scp -o StrictHostKeyChecking=no ./conffiles/l3_agent.ini ubuntu@$floating_ip:~/l3_agent.ini
+scp -o StrictHostKeyChecking=no ./conffiles/metadata_agent.ini ubuntu@$floating_ip:~/metadata_agent.ini
+scp -o StrictHostKeyChecking=no ./conffiles/linuxbridge_agent.ini ubuntu@$floating_ip:~/linuxbridge_agent.ini
+scp -o StrictHostKeyChecking=no ./conffiles/ml2_conf.ini ubuntu@$floating_ip:~/ml2_conf.ini
+
 
 
 # ssh -o StrictHostKeyChecking=no ubuntu@$floating_ip 'sudo apt update'
-scp -o StrictHostKeyChecking=no ./openstack.rc ubuntu@$floating_ip:~/openstack.rc
-scp -o StrictHostKeyChecking=no ./netplan ubuntu@$floating_ip:~/netplan                                 
+# scp -o StrictHostKeyChecking=no ./openstack.rc ubuntu@$floating_ip:~/openstack.rc
+# scp -o StrictHostKeyChecking=no ./netplan ubuntu@$floating_ip:~/netplan                                 
 while :
 do
 ssh -o StrictHostKeyChecking=no ubuntu@$floating_ip
