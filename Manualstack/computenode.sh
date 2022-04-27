@@ -23,8 +23,6 @@ rm ~/.ssh/known_hosts
 scp -o StrictHostKeyChecking=no ./computenodefiles/neutron.conf ubuntu@$floating_ip:~/neutron.conf
 scp -o StrictHostKeyChecking=no ./computenodefiles/nova.conf ubuntu@$floating_ip:~/nova.conf
 scp -o StrictHostKeyChecking=no ./nova.sh ubuntu@$floating_ip:~/nova.sh
-
-
 # ssh -o StrictHostKeyChecking=no ubuntu@$floating_ip 'sudo apt update'
 scp -o StrictHostKeyChecking=no ./openstack.rc ubuntu@$floating_ip:~/openstack.rc
 scp -o StrictHostKeyChecking=no ./netplan ubuntu@$floating_ip:~/netplan                                 

@@ -49,6 +49,14 @@ openstack server create \
 --key-name openkey \
 --wait \
 vm1
+openstack server create \
+--flavor m1.tiny \
+--image cirro+1 \
+--security-group default \
+--nic net-id=net1 \
+--key-name openkey \
+--wait \
+vm1
 #########################################Creating VM###########################################################
 
 
