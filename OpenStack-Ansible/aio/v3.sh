@@ -3,7 +3,7 @@ openstack server create \
 --flavor f6408fad-eed3-4261-87ab-80ad59462e55 \
 --image 235d9bfb-7a13-4434-9966-cfc0ae033e79 \
 --security-group TATTA \
---nic net-id=54b85f5a-081c-4dc1-914f-479732356b6e \
+--nic net-id=1d9fea2d-f3e7-4eac-bf00-9cbfb1d346e9 \
 --key-name ooru ansible
 sleep 15s
 openstack server add floating ip ansible 91.123.203.203
