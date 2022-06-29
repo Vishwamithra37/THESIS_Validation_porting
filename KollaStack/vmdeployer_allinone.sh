@@ -5,7 +5,7 @@ openstack server create \
 --flavor 19178315-27c1-4506-b6a7-7697cbc6d6b5 \
 --image 235d9bfb-7a13-4434-9966-cfc0ae033e79 \
 --security-group TATTA \
---nic net-id=54b85f5a-081c-4dc1-914f-479732356b6e,v4-fixed-ip='192.168.0.5' \
+--nic net-id=a611d38a-69fe-41a4-a35a-9b0c981e2982,v4-fixed-ip='192.168.0.5' \
 --key-name ooru $name
 sleep 15s
 openstack server add floating ip $name $floating_ip
@@ -20,7 +20,7 @@ sleep 3s
 eval `ssh-agent`
 ssh-add ./../../keys2/openkey
 rm ~/.ssh/known_hosts
-scp -o StrictHostKeyChecking=no ./base.sh ubuntu@$floating_ip:~/base_allinone.sh
+scp -o StrictHostKeyChecking=no ./base_allinone.sh ubuntu@$floating_ip:~/base_allinone.sh
 scp -o StrictHostKeyChecking=no ./../../keys2/openkey ubuntu@$floating_ip:~/openkey
 scp -o StrictHostKeyChecking=no ./addssh.sh ubuntu@$floating_ip:~/sshadd.sh
 scp -o StrictHostKeyChecking=no ./keystone.sql ubuntu@$floating_ip:~/keystone.sql

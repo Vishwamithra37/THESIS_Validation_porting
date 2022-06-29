@@ -107,7 +107,7 @@ kolla_external_fqdn: "91.123.203.36"
 # Whether to enable TLS for oslo.messaging communication with RabbitMQ.
 #om_enable_rabbitmq_tls: "{{ rabbitmq_enable_tls | bool }}"
 # CA certificate bundle in containers using oslo.messaging with RabbitMQ TLS.
-#om_rabbitmq_cacert: "{{ rabbitmq_cacert }}"
+om_rabbitmq_cacert: "{{ rabbitmq_cacert }}"
 
 ##############################
 # Neutron - Networking Options
